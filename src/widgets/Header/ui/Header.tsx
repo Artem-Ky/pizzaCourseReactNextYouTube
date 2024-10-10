@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/shared/ui/Container";
 import { CartButton } from "@/features/Cart";
+import { ProductSearchInput } from "@/features/ProductSearchInput";
 
 interface Props {
   hasSearch?: boolean;
@@ -29,6 +30,11 @@ export const Header: React.FC<Props> = ({ hasCart = true, className }) => {
             </div>
           </div>
         </Link>
+
+        <div className="mx-10 flex-1">
+          <ProductSearchInput/>
+        </div>
+
         {/* Правая часть */}
         <div className="flex items-center gap-3">
           {hasCart && <CartButton />}
