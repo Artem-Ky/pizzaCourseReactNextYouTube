@@ -8,6 +8,7 @@ import { Title } from '@/shared/ui';
 import { ProductCard } from '@/entities/Product';
 import { useSetActiveCategory } from '@/features/Categories';
 
+
 interface Props {
   title: string;
   items: any[];
@@ -25,12 +26,11 @@ export const ProductsGroupList: React.FC<Props> = ({
 }) => {
 
   const setActiveCategoryId = useSetActiveCategory((state) => state.setActiveId);
-
+  console.log(items)
   const intersectionRef = React.useRef(null);
   const intersection = useIntersection(intersectionRef, {
     threshold: 0.4,
   });
-
   useEffect(() => {
     if (intersection?.isIntersecting) {
       setActiveCategoryId(categoryId);
@@ -48,6 +48,7 @@ export const ProductsGroupList: React.FC<Props> = ({
             key={product.id}
             id={product.id}
             name={product.name}
+            ingredients={product.ingredients}
             imageUrl={product.imageUrl}
             price={product.items[0].price}
           />

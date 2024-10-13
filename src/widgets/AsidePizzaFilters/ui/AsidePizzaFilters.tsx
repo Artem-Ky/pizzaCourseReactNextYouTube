@@ -1,70 +1,27 @@
 "use client";
 
 import React from "react";
-// import { useQueryFilters, useIngredients, useFilters } from "@/shared/hooks";
 import { Input } from "@/shared/components";
 import { Title } from "@/shared/ui";
 import { FilterCheckboxGroup } from "@/features/FilterCheckboxGroup";
 import { RangeSlider } from "@/features/RangeSlider";
-import { usePizzaFilters } from "@/shared/hooks";
+import { usePizzaFilters, useQueryFilters } from "@/shared/hooks";
+import { useIngredients } from "@/entities/Ingredient";
 
 interface Props {
   className?: string;
 }
 
 export const AsidePizzaFilters: React.FC<Props> = ({ className }) => {
-  // const { ingredients, loading } = useIngredients();
+  const { ingredients, isLoading } = useIngredients();
   const filters = usePizzaFilters();
 
-  // useQueryFilters(filters);
+  useQueryFilters(filters);
 
-  const items = [
-    {
-      value: "1",
-      text: "Тонкое",
-    },
-    {
-      value: "1",
-      text: "Тонкое",
-    },
-    {
-      value: "1",
-      text: "Тонкое",
-    },
-    {
-      value: "1",
-      text: "Тонкое",
-    },
-    {
-      value: "1",
-      text: "Тонкое",
-    },
-    {
-      value: "1",
-      text: "Тонкое",
-    },
-    {
-      value: "1",
-      text: "Тонкое",
-    },
-    {
-      value: "1",
-      text: "Тонкое",
-    },
-    {
-      value: "1",
-      text: "Тонкое",
-    },
-    {
-      value: "1",
-      text: "Тонкое",
-    },
-  ];
-
-  // const items = ingredients.map((item) => ({
-  //   value: String(item.id),
-  //   text: item.name,
-  // }));
+  const items = ingredients.map((item) => ({
+    value: String(item.id),
+    text: item.name,
+  }));
 
   const updatePrices = (prices: number[]) => {
     filters.setPrices("priceFrom", prices[0]);
@@ -141,9 +98,9 @@ export const AsidePizzaFilters: React.FC<Props> = ({ className }) => {
         name="ingredients"
         className="mt-5"
         limit={6}
-        // defaultItems={items.slice(0, 6)}
+        defaultItems={items.slice(0, 6)}
         items={items}
-        // loading={loading}
+        loading={isLoading}
         onClickCheckbox={filters.setSelectedIngredients}
         selected={filters.selectedIngredients}
       />

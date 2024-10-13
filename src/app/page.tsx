@@ -11,18 +11,21 @@ export default function Home() {
     name: 'test',
     items: [{price: 450}, {price: 650}, {price: 950}],
     imageUrl: 'https://avatars.mds.yandex.net/i?id=7d03027cfade99547a7451cee2155b60616371c4-5176208-images-thumbs&n=13',
+    ingredients: ['Сырный бортик', 'Сливочная моцарелла', 'Сыры чеддер и пармезан'],
   },
   {
     id: 2,
     name: 'test',
     items: [{price: 450}, {price: 650}, {price: 950}],
     imageUrl: 'https://avatars.mds.yandex.net/i?id=7d03027cfade99547a7451cee2155b60616371c4-5176208-images-thumbs&n=13',
+    ingredients: ['Сырный бортик', 'Сливочная моцарелла'],
   },
   {
     id: 3,
     name: 'test',
     items: [{price: 450}, {price: 650}, {price: 950}],
     imageUrl: 'https://avatars.mds.yandex.net/i?id=7d03027cfade99547a7451cee2155b60616371c4-5176208-images-thumbs&n=13',
+    ingredients: ['Сырный бортик', 'Сливочная моцарелла', 'Сыры чеддер и пармезан'],
   },
   {
     id: 4,
@@ -49,50 +52,7 @@ export default function Home() {
     imageUrl: 'https://avatars.mds.yandex.net/i?id=7d03027cfade99547a7451cee2155b60616371c4-5176208-images-thumbs&n=13',
   },
 ];
-const product2 = [
-  {
-  id: 1,
-  name: 'test',
-  items: [{price: 450}, {price: 650}, {price: 950}],
-  imageUrl: 'https://avatars.mds.yandex.net/i?id=7d03027cfade99547a7451cee2155b60616371c4-5176208-images-thumbs&n=13',
-},
-{
-  id: 2,
-  name: 'test',
-  items: [{price: 450}, {price: 650}, {price: 950}],
-  imageUrl: 'https://avatars.mds.yandex.net/i?id=7d03027cfade99547a7451cee2155b60616371c4-5176208-images-thumbs&n=13',
-},
-{
-  id: 3,
-  name: 'test',
-  items: [{price: 450}, {price: 650}, {price: 950}],
-  imageUrl: 'https://avatars.mds.yandex.net/i?id=7d03027cfade99547a7451cee2155b60616371c4-5176208-images-thumbs&n=13',
-},
-{
-  id: 4,
-  name: 'test',
-  items: [{price: 450}, {price: 650}, {price: 950}],
-  imageUrl: 'https://avatars.mds.yandex.net/i?id=7d03027cfade99547a7451cee2155b60616371c4-5176208-images-thumbs&n=13',
-},
-{
-  id: 5,
-  name: 'test',
-  items: [{price: 450}, {price: 650}, {price: 950}],
-  imageUrl: 'https://avatars.mds.yandex.net/i?id=7d03027cfade99547a7451cee2155b60616371c4-5176208-images-thumbs&n=13',
-},
-{
-  id: 6,
-  name: 'test',
-  items: [{price: 450}, {price: 650}, {price: 950}],
-  imageUrl: 'https://avatars.mds.yandex.net/i?id=7d03027cfade99547a7451cee2155b60616371c4-5176208-images-thumbs&n=13',
-},
-{
-  id: 7,
-  name: 'test',
-  items: [{price: 450}, {price: 650}, {price: 950}],
-  imageUrl: 'https://avatars.mds.yandex.net/i?id=7d03027cfade99547a7451cee2155b60616371c4-5176208-images-thumbs&n=13',
-},
-];
+
   return (
     <>
       <Container className="mt-10">
