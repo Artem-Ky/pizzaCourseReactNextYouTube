@@ -1,3 +1,5 @@
+'use client';
+
 import { Api } from "@/processes/api/client-api";
 import { Ingredient } from "@prisma/client";
 import { useEffect, useState } from "react";
