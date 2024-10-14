@@ -1,13 +1,9 @@
-'use client';
+import React from "react";
 
-import React, { useEffect } from 'react';
-import { useIntersection } from 'react-use';
-
-import { cn } from '@/shared/lib/utils';
-import { Title } from '@/shared/ui';
-import { ProductCard } from '@/entities/Product';
-import { useSetActiveCategory } from '@/features/Categories';
-
+import { cn } from "@/shared/lib/utils";
+import { Title } from "@/shared/ui";
+import { ProductCard } from "./ProductCard";
+import { CategoryTrigger } from "./CategoryTrigger";
 
 interface Props {
   title: string;
@@ -24,33 +20,24 @@ export const ProductsGroupList: React.FC<Props> = ({
   categoryId,
   className,
 }) => {
-
-  const setActiveCategoryId = useSetActiveCategory((state) => state.setActiveId);
-  const intersectionRef = React.useRef(null);
-  const intersection = useIntersection(intersectionRef, {
-    threshold: 0.4,
-  });
-  useEffect(() => {
-    if (intersection?.isIntersecting) {
-      setActiveCategoryId(categoryId);
-    }
-  }, [intersection?.isIntersecting, categoryId, setActiveCategoryId]);
-
   return (
-    <div className={className} id={title} ref={intersectionRef}>
-      <Title text={title} size="lg" className="font-extrabold mb-5" />
+    <div className="relative">
+      <CategoryTrigger categoryId={categoryId} title={title} />
+      <div className={className}>
+        <Title text={title} size="lg" className="font-extrabold mb-5" />
 
-      <div className={cn('grid grid-cols-3 gap-[50px]', listClassName)}>
-        {items.map((product, i) => (
-          <ProductCard
-            key={product.id}
-            id={product.id}
-            name={product.name}
-            ingredients={product.ingredients}
-            imageUrl={product.imageUrl}
-            price={product.items[0].price}
-          />
-        ))}
+        <div className={cn("grid grid-cols-3 gap-[50px]", listClassName)}>
+          {items.map((product, i) => (
+            <ProductCard
+              key={product.id}
+              id={product.id}
+              name={product.name}
+              ingredients={product.ingredients}
+              imageUrl={product.imageUrl}
+              price={product.items[0].price}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
