@@ -1,4 +1,4 @@
-import { PizzaImage, SizeVariant } from "@/features/ProductDetailsModal";
+import { PizzaImage, SizeVariant } from "@/features/ProductDetails";
 import { prisma } from "@/shared/lib/prisma/prisma-client";
 import { Container, Title } from "@/shared/ui";
 import { notFound } from "next/navigation";
@@ -7,7 +7,7 @@ interface Props {
   id: string;
 }
 
-export async function ProductPage({ id }: Props) {
+export default async function ProductPage({ id }: Props) {
   const product = await prisma.product.findFirst({
     where: { id: Number(id) },
     include: {

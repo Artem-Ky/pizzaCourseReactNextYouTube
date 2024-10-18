@@ -5,7 +5,7 @@ import { TopBar } from "@/widgets/TopBar";
 import { getAllCategories } from "@/entities/Category";
 import { CategoryWithProductList } from "@/widgets/CategoryWithProductList";
 
-export const MainPage = async () => {
+export default async function MainPage() {
   const categories = await getAllCategories();
   return (
     <>
