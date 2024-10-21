@@ -4,11 +4,8 @@ import { Dialog, DialogContent } from "@/shared/components/ui/dialog";
 import { cn } from "@/shared/lib/utils";
 import React from "react";
 import { useRouter } from "next/navigation";
-import {
-  SelectedPizzaForm,
-  SelectedProductForm,
-} from "@/features/ProductDetails";
 import { ProductWithRelations } from "@/entities/Product";
+import { ProductForm } from "@/features/ProductDetails";
 
 interface Props {
   product: ProductWithRelations;
@@ -20,7 +17,6 @@ export const SelectedProductModal: React.FC<Props> = ({
   className,
 }) => {
   const router = useRouter();
-  const isPizza = Boolean(product.items[0].pizzaType);
 
   return (
     <Dialog open={Boolean(product)} onOpenChange={() => router.back()}>
@@ -30,22 +26,7 @@ export const SelectedProductModal: React.FC<Props> = ({
           className
         )}
       >
-        {isPizza ? (
-          <SelectedPizzaForm
-            imageUrl={product.imageUrl}
-            name={product.name}
-            ingredients={product.ingredients}
-            items={product.items}
-            onSubmit={() => {}}
-          />
-        ) : (
-          <SelectedProductForm
-            imageUrl={product.imageUrl}
-            name={product.name}
-            price={product.items[0].price}
-            onSubmit={() => {}}
-          />
-        )}
+        <ProductForm product={product} onSubmit={() => router.back()} />
       </DialogContent>
     </Dialog>
   );

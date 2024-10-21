@@ -5,8 +5,9 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/shared/ui/Container";
-import { CartButton } from "@/features/Cart";
+
 import { ProductSearchInput } from "@/features/ProductSearchInput";
+import { CartButton } from "@/features/Cart";
 
 interface Props {
   hasSearch?: boolean;

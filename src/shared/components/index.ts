@@ -7,3 +7,4 @@ export * from './ui/popover';
 export * from './ui/select';
 export * from './ui/skeleton';
 export * from './ui/slider';
+export * from './ui/sheet';
