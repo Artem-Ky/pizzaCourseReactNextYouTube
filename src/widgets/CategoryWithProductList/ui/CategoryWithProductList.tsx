@@ -13,18 +13,20 @@ export const CategoryWithProductList: React.FC<Props> = ({
   categories,
 }) => {
   return (
-    <div className={cn("flex flex-1 flex-col gap-16", className)}>
-      {categories.map(
-        (category) =>
-          category.products.length > 0 && (
-            <ProductsGroupList
-              key={category.id}
-              title={category.name}
-              categoryId={category.id}
-              items={category.products}
-            />
-          )
-      )}
+    <div className={cn("flex-1", className)}>
+      <div className="flex flex-col gap-16">
+        {categories.map(
+          (category) =>
+            category.products.length > 0 && (
+              <ProductsGroupList
+                key={category.id}
+                title={category.name}
+                categoryId={category.id}
+                items={category.products}
+              />
+            )
+        )}
+      </div>
     </div>
   );
 };

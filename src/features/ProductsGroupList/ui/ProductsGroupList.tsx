@@ -4,10 +4,11 @@ import { cn } from "@/shared/lib/utils";
 import { Title } from "@/shared/ui";
 import { ProductCard } from "./ProductCard";
 import { CategoryTrigger } from "./CategoryTrigger";
+import { ProductWithRelations } from "@/entities/Product";
 
 interface Props {
   title: string;
-  items: any[];
+  items: ProductWithRelations[];
   categoryId: number;
   className?: string;
   listClassName?: string;
