@@ -1,9 +1,10 @@
-import { create } from 'zustand';
-import { CartStateItem, getCartDetails } from '../services/getCartDetails/getCartDetails';
-import { CreateCartItemValues } from '../..';
-import { Api } from '@/processes/api/client-api';
-
-
+import { create } from "zustand";
+import {
+  CartStateItem,
+  getCartDetails,
+} from "../services/getCartDetails/getCartDetails";
+import { CreateCartItemValues } from "../..";
+import { Api } from "@/processes/api/client-api";
 
 export interface CartState {
   loading: boolean;
@@ -45,14 +46,23 @@ export const useCartStore = create<CartState>((set, get) => ({
 
   updateItemQuantity: async (id: number, quantity: number) => {
     try {
-      set({ loading: true, error: false });
+      set((state) => ({
+        loading: true,
+        error: false,
+        items: state.items.map((item) =>
+          item.id === id ? { ...item, disabled: true } : item
+        ),
+      }));
       const data = await Api.cart.updateItemQuantity(id, quantity);
       set(getCartDetails(data));
     } catch (error) {
       console.error(error);
       set({ error: true });
     } finally {
-      set({ loading: false });
+      set((state) => ({
+        loading: false,
+        items: state.items.map((item) => ({ ...item, disabled: false })),
+      }));
     }
   },
 
@@ -61,7 +71,9 @@ export const useCartStore = create<CartState>((set, get) => ({
       set((state) => ({
         loading: true,
         error: false,
-        items: state.items.map((item) => (item.id === id ? { ...item, disabled: true } : item)),
+        items: state.items.map((item) =>
+          item.id === id ? { ...item, disabled: true } : item
+        ),
       }));
       const data = await Api.cart.removeCartItem(id);
       set(getCartDetails(data));

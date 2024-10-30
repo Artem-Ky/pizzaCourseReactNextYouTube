@@ -32,7 +32,7 @@ export default async function ProductPage({ id }: Props) {
   return (
     <Container className="flex flex-col my-10">
       <div className="flex flex-1">
-        {/* <ProductForm /> */}
+        <ProductForm product={product} />
       </div>
     </Container>
   );
